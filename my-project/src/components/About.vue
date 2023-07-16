@@ -1,11 +1,14 @@
 <template>
-    <div class="text-green-600 ">
+    <div class="container max-w-[1200px] mx-auto border">
         about
+        <p>Another count: {{ count }}</p>
     </div>
-    <h1>{{ apiKey }} - api key</h1>
 </template>
 
 <script setup>
-const apiKey = import.meta.env.VITE_API_KEY
-console.log(apiKey)
+import {useStore} from "vuex"
+// const apiKey = import.meta.env.VITE_API_KEY
+import { computed } from "vue";
+const store = useStore();
+const count = computed(() => store.state.count)
 </script>
