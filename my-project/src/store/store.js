@@ -4,14 +4,19 @@ import { createStore } from 'vuex';
 const store = createStore({
   state() {
     return {
-      count: 50,
+      weatherData: null,
     };
   },
   mutations: {
-    increment(state) {
-      state.count++;
+    setWeatherData(state, data) {
+      state.weatherData = data;
     },
   },
+  getters: {
+    getCountry (state) {
+      return state.weatherData
+    }
+  }
 });
 
 export default store;

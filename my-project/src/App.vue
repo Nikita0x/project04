@@ -1,13 +1,29 @@
 <script setup>
-import Home from "./components/Home.vue"
-import About from "./components/About.vue"
+import BottomNav from './components/components/BottomNav.vue'
 </script>
 
 <template>
-  <div class="text-3xl font-bold underline bg-red-400">
-    <router-link to="/">Home</router-link> ||
-    <router-link to="/about">About</router-link>
-    <router-view/>
+  <div class="flex items-center justify-center h-screen">
+    <div class="container h-[45rem] w-[40rem] border mx-auto rounded-xl flex flex-col relative">
+      <transition>
+        <div>
+          <router-view/>
+          <BottomNav class="absolute bottom-0"/>
+        </div>
+      </transition>
+    </div>
   </div>
 </template>
 
+<style scoped>
+/* we will explain what these classes do next! */
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+</style>
