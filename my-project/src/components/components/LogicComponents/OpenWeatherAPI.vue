@@ -3,15 +3,14 @@
     <div class="bg-slate-500 text-white h-[400px] w-[400px]">
       <input
         v-model="cityName"
-        @keyup.enter="fetchWeather"
+        @keyup.enter="fetchWeatherCoordinates"
         type="text"
         placeholder="Enter city name...."
       />
       <h1>hi</h1>
       <p>Output: {{ cityName }}</p>
       <p>Output on enter: {{ inputOnEnter }}</p>
-      <button @click="console.log(weatherData)"  class="bg-green-600 border">Test button to test global store:</button>
-      <p>{{ store.getters }}</p>
+      <button @click="console.log(weatherCoordinates)"  class="bg-green-600 border">Test button to test global store:</button>
       <p v-if="country">Country: {{ country }}</p>
       <p v-if="lat">lat: {{ lat }}</p>
       <p v-if="lon">lon: {{ lon }}</p>
@@ -39,8 +38,8 @@
   });
   
   // parsing weatherData from global store
-  const weatherData = computed(() => {
-    return store.state.weatherData
+  const weatherCoordinates = computed(() => {
+    return store.state.weatherCoordinates
   })
   const country = computed(() => {
     return store.getters.getCountry
@@ -56,18 +55,34 @@
   })
 
 //async weather data retrieval on enter 
-async function fetchWeather() {
+async function fetchWeatherCoordinates() {
     inputOnEnter.value = lowercasedValue.value;
     
     try {
       const response = await fetch(
       `http://api.openweathermap.org/geo/1.0/direct?q=${cityName.value}&limit=${limit}&appid=${API_KEY}`)
       const data = await response.json();
-      store.commit("setWeatherData", data[0])
+      store.commit("setWeatherCoordinates", data[0])
     } catch (error) {
       console.error(error)
     }
     //clear the input in the end
     cityName.value = "";
+
+    // after the initial data has been retrieved, do another async fetch request with the usage of the initial data's lat and lon coordinates
+    async function fetchWeather() {
+      try {
+      const response = await fetch(
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat.value}&lon=${lon.value}&appid=${API_KEY}`)
+      const data = await response.json();
+      store.commit("setWeatherData", data)
+      console.log(data)
+      console.log(lat)
+      console.log(lon)
+    } catch (error) {
+      console.error(error)
+    }
+    }
+    await fetchWeather();
   }
   </script>
