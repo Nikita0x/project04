@@ -1,19 +1,20 @@
 <template>
-    <!-- search bar -->
-    <header class="pt-5 ">
-        <nav class="flex justify-center">
-            <input type="text" placeholder="Search..." class="w-full max-w-xs input input-bordered" />
-        </nav>
-    </header>
-    <!-- <Weather />
-    <LeafletMap class="w-1/2 h-[20rem]" /> -->
-    <OpenWeatherAPI />
+    <SearchInput/>
+    <!-- <OpenWeatherAPI/> -->
+    <div class="flex">
+        <Weather /> 
+    </div>
+    <AdditionalInfo />
+    <!-- <LeafletMap class="w-1/2 h-[20rem]" /> -->
 
 </template>
 
 <script setup>
 import Weather from '../components/Weather.vue';
 import LeafletMap from '../components/LeafletMap.vue';
-import OpenWeatherAPI from '../components/LogicComponents/OpenWeatherApi.vue';
+import SearchInput from '../components/SearchInput.vue';
+import AdditionalInfo from "../components/AdditionalInfo.vue"
+import OpenWeatherAPI from "../components/LogicComponents/OpenWeatherAPI.vue"
+
 
 </script>

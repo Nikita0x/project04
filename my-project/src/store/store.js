@@ -99,6 +99,12 @@ const store = createStore({
       }
       return null
     },
+    getDatetime (state) {
+      if(state.weatherData) {
+        return state.weatherData.dt
+      }
+      return null
+    },
     getVisibility (state) {
       if(state.weatherData) {
         return state.weatherData.visibility
@@ -135,6 +141,8 @@ const store = createStore({
       }
       return null
     },
+  },
+  actions: {
   }
 });
 

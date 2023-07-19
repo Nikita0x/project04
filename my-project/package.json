@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vueuse/core": "^10.2.1",
     "dotenv": "^16.3.1",
     "leaflet": "^1.9.4",
     "vue": "^3.3.4",
