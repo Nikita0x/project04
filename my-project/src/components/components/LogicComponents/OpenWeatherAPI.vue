@@ -1,6 +1,6 @@
 
 <template>
-    <div class="bg-slate-500 text-white h-[400px] w-[400px]">
+    <div class="bg-slate-500 text-white w-[400px]">
       <input
         v-model="cityName"
         @keyup.enter="fetchWeatherCoordinates"
@@ -10,11 +10,28 @@
       <h1>hi</h1>
       <p>Output: {{ cityName }}</p>
       <p>Output on enter: {{ inputOnEnter }}</p>
-      <button @click="console.log(weatherCoordinates)"  class="bg-green-600 border">Test button to test global store:</button>
+      <button @click="console.log(weatherData)"  class="bg-green-600 border">Test button to test global store:</button>
       <p v-if="country">Country: {{ country }}</p>
       <p v-if="lat">lat: {{ lat }}</p>
       <p v-if="lon">lon: {{ lon }}</p>
       <p v-if="city">city: {{ city }}</p>
+      <p v-if="feels_like">feels_like: {{ feels_like }}</p>
+      <p v-if="humidity">humidity: {{ humidity }}</p>
+      <p v-if="pressure">pressure: {{ pressure }}</p>
+      <p v-if="temp">temp: {{ temp }}</p>
+      <p v-if="temp_max">temp_max: {{ temp_max }}</p>
+      <p v-if="temp_min">temp_min: {{ temp_min }}</p>
+      <p v-if="sunset">sunset: {{ sunset }}</p>
+      <p v-if="sunrise">sunrise: {{ sunrise }}</p>
+      <p v-if="timezone">timezone: {{ timezone }}</p>
+      <p v-if="visibility">visibility: {{ visibility }}</p>
+      <p v-if="description">description: {{ description }}</p>
+      <p v-if="main">main: {{ main }}</p>
+      <img class="w-[120px] h-[120px]" v-if="icon" :src="`http://openweathermap.org/img/w/${icon}.png`">
+      <p v-if="wind_degree">wind_degree: {{ wind_degree }}</p>
+      <p v-if="wind_speed">wind_speed: {{ wind_speed }}</p>
+
+
     </div>
   </template>
   
@@ -41,6 +58,9 @@
   const weatherCoordinates = computed(() => {
     return store.state.weatherCoordinates
   })
+  const weatherData = computed(() => {
+    return store.state.weatherData
+  })
   const country = computed(() => {
     return store.getters.getCountry
   })
@@ -52,6 +72,51 @@
   })
   const city = computed(() => {
     return store.getters.getCity
+  })
+  const feels_like = computed(() => {
+    return store.getters.getFeelsLike
+  })
+  const humidity = computed(() => {
+    return store.getters.getHumidity
+  })
+  const pressure = computed(() => {
+    return store.getters.getPressure
+  })
+  const temp = computed(() => {
+    return store.getters.getTemp
+  })
+  const temp_max = computed(() => {
+    return store.getters.getTempMax
+  })
+  const temp_min = computed(() => {
+    return store.getters.getTempMin
+  })
+  const sunrise = computed(() => {
+    return store.getters.getSunrise
+  })
+  const sunset = computed(() => {
+    return store.getters.getSunset
+  })
+  const timezone = computed(() => {
+    return store.getters.getTimezone
+  })
+  const visibility = computed(() => {
+    return store.getters.getVisibility
+  })
+  const description = computed(() => {
+    return store.getters.getDescription
+  })
+  const icon = computed(() => {
+    return store.getters.getIcon
+  })
+  const main = computed(() => {
+    return store.getters.getMain
+  })
+  const wind_speed = computed(() => {
+    return store.getters.getWindSpeed
+  })
+  const wind_degree = computed(() => {
+    return store.getters.getWindDegree
   })
 
 //async weather data retrieval on enter 
@@ -73,12 +138,10 @@ async function fetchWeatherCoordinates() {
     async function fetchWeather() {
       try {
       const response = await fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${lat.value}&lon=${lon.value}&appid=${API_KEY}`)
+      `https://api.openweathermap.org/data/2.5/weather?lat=${lat.value}&lon=${lon.value}&appid=${API_KEY}&units=metric`)
       const data = await response.json();
       store.commit("setWeatherData", data)
       console.log(data)
-      console.log(lat)
-      console.log(lon)
     } catch (error) {
       console.error(error)
     }

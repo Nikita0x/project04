@@ -44,7 +44,97 @@ const store = createStore({
         return state.weatherCoordinates.name
       }
       return null
-    }
+    },
+    getFeelsLike (state) {
+      if(state.weatherData) {
+        return state.weatherData.main.feels_like
+      }
+      return null
+    },
+    getHumidity (state) {
+      if(state.weatherData) {
+        return state.weatherData.main.humidity
+      }
+      return null
+    },
+    getPressure (state) {
+      if(state.weatherData) {
+        return state.weatherData.main.pressure
+      }
+      return null
+    },
+    getTemp (state) {
+      if(state.weatherData) {
+        return state.weatherData.main.temp
+      }
+      return null
+    },
+    getTempMax (state) {
+      if(state.weatherData) {
+        return state.weatherData.main.temp_max
+      }
+      return null
+    },
+    getTempMin (state) {
+      if(state.weatherData) {
+        return state.weatherData.main.temp_min
+      }
+      return null
+    },
+    getSunrise (state) {
+      if(state.weatherData) {
+        return state.weatherData.sys.sunrise
+      }
+      return null
+    },
+    getSunset (state) {
+      if(state.weatherData) {
+        return state.weatherData.sys.sunset
+      }
+      return null
+    },
+    getTimezone (state) {
+      if(state.weatherData) {
+        return state.weatherData.timezone
+      }
+      return null
+    },
+    getVisibility (state) {
+      if(state.weatherData) {
+        return state.weatherData.visibility
+      }
+      return null
+    },
+    getDescription (state) {
+      if(state.weatherData) {
+        return state.weatherData.weather[0].description
+      }
+      return null
+    },
+    getIcon (state) {
+      if(state.weatherData) {
+        return state.weatherData.weather[0].icon
+      }
+      return null
+    },
+    getMain (state) {
+      if(state.weatherData) {
+        return state.weatherData.weather[0].main
+      }
+      return null
+    },
+    getWindDegree (state) {
+      if(state.weatherData) {
+        return state.weatherData.wind.deg
+      }
+      return null
+    },
+    getWindSpeed (state) {
+      if(state.weatherData) {
+        return state.weatherData.wind.speed
+      }
+      return null
+    },
   }
 });
 
