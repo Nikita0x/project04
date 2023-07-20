@@ -3,15 +3,24 @@
   <div class="collapse bg-base-200">
     <input type="checkbox" />
     <div class="text-xl font-medium collapse-title">More details</div>
-    <div class="collapse-content">
+    <div class="collapse-content flex flex-col space-y-3">
       <p v-if="store.state.weatherData" class="text-2xl">
-        Country - {{ country }}
+        Minimum: <span class="text-[#D1D5DB] ml-1">{{ temp_min }} °C</span>
       </p>
       <p v-if="store.state.weatherData" class="text-2xl">
-        Minimum - {{ temp_min }} °C
+        Maximum: <span class="text-[#D1D5DB] ml-1">{{ temp_max }} °C</span>
       </p>
       <p v-if="store.state.weatherData" class="text-2xl">
-        Maximum - {{ temp_max }} °C
+        Feels like: <span class="text-[#D1D5DB] ml-1">{{ feels_like }} °C</span>
+      </p>
+      <p v-if="store.state.weatherData" class="text-2xl">
+        Latitude: <span class="text-[#D1D5DB] ml-1">{{ lat }} °</span>
+      </p>
+      <p v-if="store.state.weatherData" class="text-2xl">
+        Longitude: <span class="text-[#D1D5DB] ml-1">{{ lon }} °</span>
+      </p>
+      <p v-if="store.state.weatherData" class="text-2xl">
+        Humidity: <span class="text-[#D1D5DB] ml-1">{{ humidity }} %</span>
       </p>
       <!-- if no data -->
       <p v-else>No data</p>
@@ -40,6 +49,22 @@ const temp_min = computed(() => {
     const roundedTemperature = Math.floor(t);
     return roundedTemperature;
   }
+});
+const feels_like = computed(() => {
+  let t = store.getters.getFeelsLike;
+  if (t) {
+    const roundedTemperature = Math.floor(t);
+    return roundedTemperature;
+  }
+});
+const lat = computed(() => {
+  return store.getters.getLat;
+});
+const lon = computed(() => {
+  return store.getters.getLon;
+});
+const humidity = computed(() => {
+  return store.getters.getHumidity;
 });
 
 const icon = computed(() => {

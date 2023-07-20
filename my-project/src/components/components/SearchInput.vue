@@ -13,6 +13,7 @@
 <script setup>
 const API_KEY = import.meta.env.VITE_OPENWEATHER_API;
 const APILAYER_KEY = import.meta.env.VITE_APILAYER_API;
+const TIMEZONEDB_KEY = import.meta.env.VITE_TIMEZONEDB_API;
 
 import { ref, computed } from 'vue';
 import { useStore } from 'vuex'; // Import the useStore function
@@ -65,6 +66,20 @@ async function fetchWeatherCoordinates() {
     }
   }
   await fetchWeather();
+
+  async function fetchTimezonedb() {
+    try {
+      const response = await fetch(
+        `http://api.timezonedb.com/v2.1/get-time-zone?key=${TIMEZONEDB_KEY}&format=json&by=position&lat=${lat.value}&lng=${lon.value}`
+      );
+      const data = await response.json();
+      store.commit('setTimezoneDB', data);
+      console.log(data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  await fetchTimezonedb();
 }
 
 </script>

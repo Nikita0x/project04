@@ -4,9 +4,9 @@ import BottomNav from './components/components/BottomNav.vue'
 
 <template>
   <div class="flex items-center justify-center h-screen">
-    <div class="container h-[45rem] w-[35rem] border mx-auto rounded-xl flex flex-col relative">
+    <div class="container h-[50rem] w-[35rem] border mx-auto rounded-xl flex flex-col relative">
       <transition>
-        <div>
+        <div class="overflow-auto pb-32">
           <router-view/>
           <BottomNav class="absolute bottom-0"/>
         </div>

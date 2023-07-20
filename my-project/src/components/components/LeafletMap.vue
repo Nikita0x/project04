@@ -1,5 +1,5 @@
 <template>
-  <div id="map" class="mx-auto border border-black rounded-xl"></div>
+  <div id="map" class=" z-0 mx-auto border border-black rounded-xl"></div>
 </template>
 
 <script setup>
@@ -15,3 +15,4 @@ onMounted(() => {
   }).addTo(map);
 });
 </script>
+

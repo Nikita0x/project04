@@ -7,6 +7,7 @@ const store = createStore({
       //here we define the name for the global store
       weatherCoordinates: null,
       weatherData: null,
+      timezonedb: null,
     };
   },
   mutations: {
@@ -16,6 +17,9 @@ const store = createStore({
     },
     setWeatherData(state, data) {
       state.weatherData = data;
+    },
+    setTimezoneDB(state, data) {
+      state.timezonedb = data;
     },
   },
   getters: {
@@ -138,6 +142,12 @@ const store = createStore({
     getWindSpeed (state) {
       if(state.weatherData) {
         return state.weatherData.wind.speed
+      }
+      return null
+    },
+    getLocalTime (state) {
+      if(state.timezonedb) {
+        return state.timezonedb.formatted
       }
       return null
     },
