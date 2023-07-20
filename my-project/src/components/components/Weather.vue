@@ -70,7 +70,6 @@ const description = computed(() => {
 const formattedTime = computed(() => {
   let time = store.getters.getLocalTime;
   const formattedTime = useDateFormat(time, 'HH:MM', { locales: 'en-US' })
-  console.log(formattedTime.value)
   return formattedTime.value
 })
 const formattedDay = computed(() => {
