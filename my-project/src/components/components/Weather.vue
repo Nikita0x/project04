@@ -4,12 +4,12 @@
   >
   <!-- left column -->
     <div
-      class="flex flex-col w-full text-gray-300 justify-evenly items-center sm:rounded-l-xl"
+      class="flex flex-col items-center w-full text-gray-300 justify-evenly sm:rounded-l-xl"
     >
       <p v-if="store.state.weatherData" class="pt-5 text-3xl">{{ city }}</p>
         <div v-if="store.state.weatherData" class="flex text-2xl">
         {{ main }}
-        <div class="flex justify-center items-center lg:tooltip w-10 h-10" :data-tip="description">
+        <div class="flex items-center justify-center w-10 h-10 lg:tooltip" :data-tip="description">
           <img
             class="ml-2"
             :src="`http://openweathermap.org/img/w/${icon}.png`"
@@ -20,10 +20,12 @@
     </div>
     <!-- right column -->
     <div
-      class="flex flex-col w-full text-gray-300 items-center justify-evenly sm:rounded-r-xl"
+      class="flex flex-col items-center w-full text-gray-300 justify-evenly sm:rounded-r-xl"
     >
     <p class="text-2xl" v-if="store.state.timezonedb">{{ formattedDay }}</p>
     <p class="text-2xl" v-if="store.state.timezonedb">{{ formattedTime }}</p>
+
+
         <div v-if="store.state.weatherData">
           <div class="lg:tooltip" :data-tip="country">
             <img :src="`https://flagsapi.com/${country}/shiny/24.png`">
@@ -69,14 +71,17 @@ const description = computed(() => {
 
 const formattedTime = computed(() => {
   let time = store.getters.getLocalTime;
-  const formattedTime = useDateFormat(time, 'HH:MM', { locales: 'en-US' })
-  return formattedTime.value
+  const [datePart, timePart] = time.split(' ')
+  const newTime = timePart.split(":");
+  const formatted = `${newTime[0]}:${newTime[1]}`
+  return formatted
 })
 const formattedDay = computed(() => {
   let time = store.getters.getLocalTime;
   const formattedDay = useDateFormat(time, 'dddd', { locales: 'en-US' })
   return formattedDay.value
 })
+
 
 </script>
 

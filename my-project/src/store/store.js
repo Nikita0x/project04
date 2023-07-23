@@ -8,6 +8,8 @@ const store = createStore({
       weatherCoordinates: null,
       weatherData: null,
       timezonedb: null,
+      opencagedata: null,
+      pixabaydata: null,
     };
   },
   mutations: {
@@ -20,6 +22,12 @@ const store = createStore({
     },
     setTimezoneDB(state, data) {
       state.timezonedb = data;
+    },
+    setOpencagedata(state, data) {
+      state.opencagedata = data;
+    },
+    setPixabaydata(state, data) {
+      state.pixabaydata = data;
     },
   },
   getters: {
@@ -85,18 +93,6 @@ const store = createStore({
       }
       return null
     },
-    getSunrise (state) {
-      if(state.weatherData) {
-        return state.weatherData.sys.sunrise
-      }
-      return null
-    },
-    getSunset (state) {
-      if(state.weatherData) {
-        return state.weatherData.sys.sunset
-      }
-      return null
-    },
     getTimezone (state) {
       if(state.weatherData) {
         return state.weatherData.timezone
@@ -148,6 +144,49 @@ const store = createStore({
     getLocalTime (state) {
       if(state.timezonedb) {
         return state.timezonedb.formatted
+      }
+      return null
+    },
+    getCurrencyName(state) {
+      if(state.opencagedata) {
+        return state.opencagedata.results[0].annotations.currency.name
+      }
+      return null
+    },
+    getCurrencySymbol(state) {
+      if(state.opencagedata) {
+        return state.opencagedata.results[0].annotations.currency.symbol
+      }
+      return null
+    },
+    getSunrise (state) {
+      if(state.opencagedata) {
+        return state.opencagedata.results[0].annotations.sun.rise.apparent
+      }
+      return null
+    },
+    getSunset (state) {
+      if(state.opencagedata) {
+        return state.opencagedata.results[0].annotations.sun.set.apparent
+      }
+      return null
+    },
+    getTimezoneoffset (state) {
+      if(state.opencagedata) {
+        return state.opencagedata.results[0].annotations.timezone.offset_sec;
+      }
+      return null
+    },
+    getContinent (state) {
+      if(state.opencagedata) {
+        return state.opencagedata.results[0].components.continent;
+      }
+      return null
+    },
+    // Pixabay api
+    getHits (state) {
+      if(state.pixabaydata) {
+        return state.pixabaydata.hits
       }
       return null
     },

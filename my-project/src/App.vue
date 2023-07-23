@@ -1,12 +1,13 @@
 <script setup>
 import BottomNav from './components/components/BottomNav.vue'
+import { vInfiniteScroll } from '@vueuse/components';
 </script>
 
 <template>
   <div class="flex items-center justify-center h-screen">
     <div class="container h-[50rem] w-[35rem] border mx-auto rounded-xl flex flex-col relative">
       <transition>
-        <div class="overflow-auto pb-32">
+        <div class="pb-32 overflow-auto">
           <router-view/>
           <BottomNav class="absolute bottom-0"/>
         </div>

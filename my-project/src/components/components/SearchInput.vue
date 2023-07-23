@@ -2,7 +2,7 @@
     <nav class="flex justify-center">
       <input
         type="text"
-        placeholder="Search..."
+        placeholder="Search"
         class="w-full max-w-xs input input-bordered"
         v-model="cityName"
         @keyup.enter="fetchWeatherCoordinates"
@@ -14,6 +14,9 @@
 const API_KEY = import.meta.env.VITE_OPENWEATHER_API;
 const APILAYER_KEY = import.meta.env.VITE_APILAYER_API;
 const TIMEZONEDB_KEY = import.meta.env.VITE_TIMEZONEDB_API;
+const OPENCAGEDATA_KEY = import.meta.env.VITE_OPENCAGEDATA_API;
+const PIXABAY_API = import.meta.env.VITE_PIXABAY_API;
+
 
 import { ref, computed } from 'vue';
 import { useStore } from 'vuex'; // Import the useStore function
@@ -42,7 +45,7 @@ async function fetchWeatherCoordinates() {
   
   try {
     const response = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${inputOnEnter.value}&limit=${limit}&appid=${API_KEY}`
+      `https://api.openweathermap.org/geo/1.0/direct?q=${inputOnEnter.value}&limit=${limit}&appid=${API_KEY}`
     );
     const data = await response.json();
     store.commit('setWeatherCoordinates', data[0]);
@@ -67,10 +70,11 @@ async function fetchWeatherCoordinates() {
   }
   await fetchWeather();
 
+  //calling timezonedb api
   async function fetchTimezonedb() {
     try {
       const response = await fetch(
-        `http://api.timezonedb.com/v2.1/get-time-zone?key=${TIMEZONEDB_KEY}&format=json&by=position&lat=${lat.value}&lng=${lon.value}`
+        `https://api.timezonedb.com/v2.1/get-time-zone?key=${TIMEZONEDB_KEY}&format=json&by=position&lat=${lat.value}&lng=${lon.value}`
       );
       const data = await response.json();
       store.commit('setTimezoneDB', data);
@@ -80,6 +84,37 @@ async function fetchWeatherCoordinates() {
     }
   }
   await fetchTimezonedb();
+  //calling geocagedata api
+  async function fetchOpencagedata() {
+    try {
+      const response = await fetch(
+        `https://api.opencagedata.com/geocode/v1/json?q=${lat.value}+${lon.value}&key=${OPENCAGEDATA_KEY}&pretty=1`
+      );
+      const data = await response.json();
+      store.commit('setOpencagedata', data);
+      console.log(data.results[0]);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  await fetchOpencagedata();
+
+  //calling pixabay api
+  async function fetchPixabay() {
+    const encodedSearchTerm = encodeURIComponent(inputOnEnter.value);
+  try {
+    const response = await fetch(
+      `https://pixabay.com/api/?key=${PIXABAY_API}&q=${encodedSearchTerm}&image_type=photo`
+    );
+    console.log('encoded search term =' + encodedSearchTerm)
+    const data = await response.json();
+    store.commit('setPixabaydata', data);
+    console.log(data);
+  } catch (error) {
+    console.error(error);
+  }
+  }
+  await fetchPixabay();
 }
 
 </script>

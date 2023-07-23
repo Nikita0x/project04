@@ -3,7 +3,13 @@
   <div class="collapse bg-base-200">
     <input type="checkbox" />
     <div class="text-xl font-medium collapse-title">More details</div>
-    <div class="collapse-content flex flex-col space-y-3">
+    <div class="flex flex-col space-y-3 collapse-content">
+      <p class="text-2xl">
+        Sunrise: <span class="text-[#D1D5DB] ml-1"> time</span>
+      </p>
+      <p class="text-2xl">
+        Sunset: <span class="text-[#D1D5DB] ml-1">time</span>
+      </p>
       <p v-if="store.state.weatherData" class="text-2xl">
         Minimum: <span class="text-[#D1D5DB] ml-1">{{ temp_min }} °C</span>
       </p>
@@ -22,6 +28,13 @@
       <p v-if="store.state.weatherData" class="text-2xl">
         Humidity: <span class="text-[#D1D5DB] ml-1">{{ humidity }} %</span>
       </p>
+      <p v-if="store.state.weatherData" class="text-2xl">
+        Continent: <span class="text-[#D1D5DB] ml-1">{{ continent }}</span>
+      </p>
+      <p v-if="store.state.weatherData" class="text-2xl">
+        Currency: <span class="text-[#D1D5DB] ml-1">{{ currencyName }} ( {{ currencySymbol }} )</span>
+      </p>
+
       <!-- if no data -->
       <p v-else>No data</p>
     </div>
@@ -75,5 +88,14 @@ const main = computed(() => {
 });
 const datetime = computed(() => {
   return store.getters.getDatetime;
+});
+const currencyName = computed(() => {
+  return store.getters.getCurrencyName;
+});
+const currencySymbol = computed(() => {
+  return store.getters.getCurrencySymbol;
+});
+const continent = computed(() => {
+  return store.getters.getContinent;
 });
 </script>
