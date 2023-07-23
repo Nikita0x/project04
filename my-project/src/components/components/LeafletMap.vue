@@ -1,5 +1,5 @@
 <template>
-  <div id="map" class="z-0 mx-auto rounded-xl"></div>
+    <div id="map" class="z-0 mx-auto mb-16 rounded-xl"></div>
 </template>
 
 <script setup>
@@ -57,6 +57,7 @@ function renderMap(lat, lon) {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
   }).addTo(mapInstance);
+  
 
   L.marker([lat, lon]).addTo(mapInstance);
 }

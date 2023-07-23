@@ -1,18 +1,21 @@
 <template>
     <nav class="flex justify-center">
-      <input
+      <div class="relative w-full px-10">
+        <input
         type="text"
         placeholder="Search"
-        class="w-full max-w-xs input input-bordered"
+        class="w-full input input-bordered"
         v-model="cityName"
         @keyup.enter="fetchWeatherCoordinates"
-      />
+        />
+       <button @click="fetchWeatherCoordinates" class="lg:hidden absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 right-[1rem] btn btn-sm" >Search</button>
+      </div>
+
     </nav>
 </template>
 
 <script setup>
 const API_KEY = import.meta.env.VITE_OPENWEATHER_API;
-const APILAYER_KEY = import.meta.env.VITE_APILAYER_API;
 const TIMEZONEDB_KEY = import.meta.env.VITE_TIMEZONEDB_API;
 const OPENCAGEDATA_KEY = import.meta.env.VITE_OPENCAGEDATA_API;
 const PIXABAY_API = import.meta.env.VITE_PIXABAY_API;
@@ -37,6 +40,9 @@ const lat = computed(() => {
 });
 const lon = computed(() => {
   return store.getters.getLon;
+});
+const countryCode = computed(() => {
+  return store.getters.getCountryCode;
 });
 
 //async weather data retrieval on enter
@@ -63,7 +69,7 @@ async function fetchWeatherCoordinates() {
       );
       const data = await response.json();
       store.commit('setWeatherData', data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.error(error);
     }
@@ -78,7 +84,7 @@ async function fetchWeatherCoordinates() {
       );
       const data = await response.json();
       store.commit('setTimezoneDB', data);
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       console.error(error);
     }
@@ -115,6 +121,21 @@ async function fetchWeatherCoordinates() {
   }
   }
   await fetchPixabay();
+  
+    //calling restcountries api
+    async function fetchRestCountries() {
+    try {
+    const response = await fetch(
+      `https://restcountries.com/v3.1/alpha/${countryCode.value}`
+    );
+    const data = await response.json();
+    store.commit('setRestCountriesData', data[0]);
+    console.log(data[0]);
+  } catch (error) {
+    console.error(error);
+  }
+  }
+  await fetchRestCountries();
 }
 
 </script>

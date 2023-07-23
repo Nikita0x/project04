@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-[200px] bg-[#1D232A] shadow-xl border border-black flex flex-col sm:flex-row sm:rounded-xl"
+    class="w-full h-[200px] bg-[#1D232A] shadow-xl flex flex-col sm:flex-row sm:rounded-xl"
   >
   <!-- left column -->
     <div

@@ -1,12 +1,12 @@
 <template>
   <div
-    class="flex flex-col justify-center items-center w-[240px] h-[200px] border border-black bg-red-200 rounded-xl text-black hover:scale-105 transition cursor-pointer"
+    class="flex flex-col justify-center items-center w-[240px] h-[200px] border border-black bg-red-200 p-5 sm:p-0 rounded-xl text-black hover:scale-105 transition cursor-pointer"
     v-for="item in hits"
     :key="item.id"
   >
     <img :src="item.previewURL" alt="images" />
-    <p>{{ item.user }}</p>
-    <p>❤️ {{ item.likes }}</p>
+    <p>By: {{ item.user }}</p>
+    <p>{{ item.likes }} ❤️</p>
   </div>
 </template>
 

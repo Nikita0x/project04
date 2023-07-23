@@ -1,5 +1,5 @@
 <template>
-    <div class=" flex justify-center items-center  container max-w-[1200px] mx-auto border">
+    <div class=" flex justify-center items-center  container max-w-[1200px] mx-auto">
         <InfiniteScroll/>
     </div>
 </template>

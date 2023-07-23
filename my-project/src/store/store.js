@@ -10,6 +10,7 @@ const store = createStore({
       timezonedb: null,
       opencagedata: null,
       pixabaydata: null,
+      restCountries: null,
     };
   },
   mutations: {
@@ -28,6 +29,9 @@ const store = createStore({
     },
     setPixabaydata(state, data) {
       state.pixabaydata = data;
+    },
+    setRestCountriesData(state, data) {
+      state.restCountries = data;
     },
   },
   getters: {
@@ -141,12 +145,14 @@ const store = createStore({
       }
       return null
     },
+    // Timezone DB api
     getLocalTime (state) {
       if(state.timezonedb) {
         return state.timezonedb.formatted
       }
       return null
     },
+    // OPENCAGE data api
     getCurrencyName(state) {
       if(state.opencagedata) {
         return state.opencagedata.results[0].annotations.currency.name
@@ -183,10 +189,53 @@ const store = createStore({
       }
       return null
     },
+    getCountryCode (state) {
+      if(state.opencagedata) {
+        return state.opencagedata.results[0].components["ISO_3166-1_alpha-2"];
+      }
+      return null
+    },
     // Pixabay api
     getHits (state) {
       if(state.pixabaydata) {
         return state.pixabaydata.hits
+      }
+      return null
+    },
+    // Rest Countries API
+    getCapital (state) {
+      if(state.restCountries) {
+        return state.restCountries.capital[0]
+      }
+      return null
+    },
+    getCoatOfArms(state) {
+      if(state.restCountries) {
+        return state.restCountries.coatOfArms.svg
+      }
+      return null
+    },
+    getIndependent(state) {
+      if(state.restCountries) {
+        return state.restCountries.independent
+      }
+      return null
+    },
+    getLanguages(state) {
+      if(state.restCountries) {
+        return state.restCountries.languages
+      }
+      return null
+    },
+    getPopulation(state) {
+      if(state.restCountries) {
+        return state.restCountries.population
+      }
+      return null
+    },
+    getUnMember(state) {
+      if(state.restCountries) {
+        return state.restCountries.unMember
       }
       return null
     },
