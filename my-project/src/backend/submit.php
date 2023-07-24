@@ -27,9 +27,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     $message = $_POST["message"];
 
 
- // Validate the data (you can add your validation logic here)
-
-
+    // Validate required fields
+    if (empty($name) || empty($email) || empty($message)) {
+        echo "Error: All fields are required.";
+    } else {
      // Connect to the database
      $servername = $config['servername'];
      $username = $config['username']; // Your MySQL database username
@@ -59,4 +60,6 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $stmt->close();
     $conn->close();
+
+    }
 };
