@@ -25,7 +25,7 @@ import { ref, computed } from 'vue';
 import { useStore } from 'vuex'; // Import the useStore function
 const store = useStore(); // Access the store using the useStore function
 
-const cityName = ref('');
+const cityName = ref('tokyo');
 const limit = 5;
 
 const inputOnEnter = ref('');
@@ -79,9 +79,10 @@ async function fetchWeatherCoordinates() {
 
   //calling timezonedb api
   async function fetchTimezonedb() {
+    let page = 1;
     try {
       const response = await fetch(
-        `https://api.timezonedb.com/v2.1/get-time-zone?key=${TIMEZONEDB_KEY}&format=json&by=position&lat=${lat.value}&lng=${lon.value}`
+        `https://api.timezonedb.com/v2.1/get-time-zone?key=${TIMEZONEDB_KEY}&format=json&by=position&lat=${lat.value}&lng=${lon.value}&page=${page++}`
       );
       const data = await response.json();
       store.commit('setTimezoneDB', data);
@@ -99,7 +100,7 @@ async function fetchWeatherCoordinates() {
       );
       const data = await response.json();
       store.commit('setOpencagedata', data);
-      console.log(data.results[0]);
+      // console.log(data.results[0]);
       await fetchPixabay();
     } catch (error) {
       console.error(error);
@@ -113,7 +114,7 @@ async function fetchWeatherCoordinates() {
     const response = await fetch(
       `https://pixabay.com/api/?key=${PIXABAY_API}&q=${encodedSearchTerm}&image_type=photo`
     );
-    console.log('encoded search term =' + encodedSearchTerm)
+    // console.log('encoded search term =' + encodedSearchTerm)
     const data = await response.json();
     store.commit('setPixabaydata', data);
     console.log(data);
@@ -131,7 +132,7 @@ async function fetchWeatherCoordinates() {
     );
     const data = await response.json();
     store.commit('setRestCountriesData', data[0]);
-    console.log(data[0]);
+    // console.log(data[0]);
   } catch (error) {
     console.error(error);
   }

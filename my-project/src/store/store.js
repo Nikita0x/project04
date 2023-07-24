@@ -11,6 +11,7 @@ const store = createStore({
       opencagedata: null,
       pixabaydata: null,
       restCountries: null,
+      inputOnEnter: null,
     };
   },
   mutations: {
@@ -32,6 +33,9 @@ const store = createStore({
     },
     setRestCountriesData(state, data) {
       state.restCountries = data;
+    },
+    setInputOnEnter(state, data) {
+      state.inputOnEnter = data;
     },
   },
   getters: {
@@ -236,6 +240,13 @@ const store = createStore({
     getUnMember(state) {
       if(state.restCountries) {
         return state.restCountries.unMember
+      }
+      return null
+    },
+    // input on enter
+    getInputOnEnter(state) {
+      if(state.inputOnEnter) {
+        return state.input
       }
       return null
     },
