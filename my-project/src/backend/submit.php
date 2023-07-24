@@ -1,4 +1,4 @@
- <?php
+<?php
  $config = require 'config.php';
 
  $name = $_POST['name'];
@@ -45,13 +45,18 @@ if($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
-    // Insert the data into the database
-     $sql = "INSERT INTO form_submissions (name, subject, email, message, created_at) VALUES ('$name', '$subject', '$email', '$message', '$currentTimestamp')";
-     if ($conn->query($sql) === TRUE) {
+
+    // Use prepared statements to insert the data into the database securely
+    $sql = "INSERT INTO form_submissions (name, subject, email, message, created_at) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssss", $name, $subject, $email, $message, $currentTimestamp);
+
+    if ($stmt->execute()) {
         echo "Form submission successful!";
-     } else {
-         echo "Error: " . $sql . "<br>" . $conn->error;
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
     }
-    
+
+    $stmt->close();
     $conn->close();
 };
