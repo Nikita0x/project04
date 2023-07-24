@@ -66,15 +66,25 @@ const icon = computed(() => {
   return store.getters.getIcon;
 });
 const description = computed(() => {
-  return store.getters.getDescription;
+  if(store.getters.getDescription) {
+    return store.getters.getDescription;
+  } else {
+    console.error('incorrect city name')
+    return null
+  }
 });
 
 const formattedTime = computed(() => {
-  let time = store.getters.getLocalTime;
-  const [datePart, timePart] = time.split(' ')
-  const newTime = timePart.split(":");
-  const formatted = `${newTime[0]}:${newTime[1]}`
-  return formatted
+  if(store.getters.getLocalTime) {
+    let time = store.getters.getLocalTime;
+    const [datePart, timePart] = time.split(' ')
+    const newTime = timePart.split(":");
+    const formatted = `${newTime[0]}:${newTime[1]}`
+    return formatted
+  } else {
+    console.error('incorrect city name')
+    return null
+  }
 })
 const formattedDay = computed(() => {
   let time = store.getters.getLocalTime;

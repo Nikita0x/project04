@@ -32,7 +32,7 @@
       <p v-else>No data</p>
     </div>
   </div>
-  <div v-else >No data so far 😭</div>
+  <div v-else class="flex items-center justify-center h-1/2" >No data so far 😭</div>
 </template>
 
 <script setup>

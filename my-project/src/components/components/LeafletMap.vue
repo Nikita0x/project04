@@ -10,10 +10,20 @@ import { useStore } from 'vuex';
 const store = useStore();
 
 const lat = computed(() => {
-  return store.getters.getLat;
+  if(store.getters.getLat) {
+    return store.getters.getLat;
+  } else {
+    console.error('API call to openweather failed.')
+    return null
+  }
 });
 const lon = computed(() => {
-  return store.getters.getLon;
+  if(store.getters.getLon) {
+    return store.getters.getLon;
+  } else {
+    console.error('API call to openweather failed.')
+    return null
+  }
 });
 
 let mapInstance = null; // Store the map instance in a variable
@@ -31,7 +41,15 @@ onMounted(() => {
 // watch for changes
 watch(lat, (newValue, oldValue) => {
   nextTick(() => {
-    renderMap(lat.value, lon.value)
+    if(lat.value && lon.value) {
+      renderMap(lat.value, lon.value)
+    } else if (lat.value === null || lon.value === null) {
+      console.log('lat.value OR lon.value === null')
+      return
+    } else if (lat.value === undefined || lon.value === undefined) {
+      console.log('lat.value OR lon.value === undefined')
+      return
+    }
   })  
 })
 

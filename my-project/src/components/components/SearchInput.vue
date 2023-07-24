@@ -55,8 +55,9 @@ async function fetchWeatherCoordinates() {
     );
     const data = await response.json();
     store.commit('setWeatherCoordinates', data[0]);
+    await fetchWeather();
   } catch (error) {
-    console.error(error);
+    console.error('could not retireve data from openweatherapi + ',error);
   }
   //clear the input in the end
   cityName.value = '';
@@ -70,11 +71,11 @@ async function fetchWeatherCoordinates() {
       const data = await response.json();
       store.commit('setWeatherData', data);
       // console.log(data);
+      await fetchTimezonedb();
     } catch (error) {
       console.error(error);
     }
   }
-  await fetchWeather();
 
   //calling timezonedb api
   async function fetchTimezonedb() {
@@ -85,11 +86,11 @@ async function fetchWeatherCoordinates() {
       const data = await response.json();
       store.commit('setTimezoneDB', data);
       // console.log(data);
+      await fetchOpencagedata();
     } catch (error) {
       console.error(error);
     }
   }
-  await fetchTimezonedb();
   //calling geocagedata api
   async function fetchOpencagedata() {
     try {
@@ -99,11 +100,11 @@ async function fetchWeatherCoordinates() {
       const data = await response.json();
       store.commit('setOpencagedata', data);
       console.log(data.results[0]);
+      await fetchPixabay();
     } catch (error) {
       console.error(error);
     }
   }
-  await fetchOpencagedata();
 
   //calling pixabay api
   async function fetchPixabay() {
@@ -116,11 +117,11 @@ async function fetchWeatherCoordinates() {
     const data = await response.json();
     store.commit('setPixabaydata', data);
     console.log(data);
+    await fetchRestCountries();
   } catch (error) {
     console.error(error);
   }
   }
-  await fetchPixabay();
   
     //calling restcountries api
     async function fetchRestCountries() {
@@ -135,7 +136,6 @@ async function fetchWeatherCoordinates() {
     console.error(error);
   }
   }
-  await fetchRestCountries();
 }
 
 </script>
