@@ -4,7 +4,7 @@ import BottomNav from './components/components/BottomNav.vue'
 </script>
 
 <template>
-  <div class="flex items-center justify-center h-screen bg-slate-500">
+  <div class="flex items-center justify-center h-screen text-xs bg-slate-500 sm:text-sm md:text-base">
     <div class="container h-screen w-[35rem] border border-green-400 mx-auto rounded-xl flex flex-col relative">
       <transition>
         <div class="overflow-auto">
