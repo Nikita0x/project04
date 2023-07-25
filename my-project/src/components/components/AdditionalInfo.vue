@@ -1,7 +1,6 @@
 <template>
   <!-- collapsable -->
-  <div v-if="store.state.weatherData" class="collapse bg-base-200">
-    <input type="checkbox" />
+  <div v-if="store.state.weatherData" class="text-black">
     <div class="text-xl font-medium collapse-title">More details</div>
     <div class="flex flex-col space-y-3 collapse-content">
       <p class="text-2xl">

@@ -18,7 +18,7 @@ const routes = [
     },
     {
         path: '/images',
-        name: 'Imageso of the country',
+        name: 'Images of the country',
         component: Images
     },
     {
