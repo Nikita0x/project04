@@ -4,14 +4,14 @@
     v-for="item in hits"
     :key="item.id"
   >
-    <img :src="item.previewURL" alt="images" />
-    <p>By: {{ item.user }}</p>
-    <p>{{ item.likes }} ❤️</p>
-  </div>
+      <img :src="item.previewURL" alt="images" />
+      <p>By: {{ item.user }}</p>
+      <p>{{ item.likes }} ❤️</p>
+    </div>
 </template>
 
 <script setup>
-import { ref, computed, watch, nextTick } from 'vue';
+import { ref, computed, watch } from 'vue';
 import store from '../../../store/store';
 
 const hits = computed(() => store.getters.getHits);

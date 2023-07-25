@@ -11,7 +11,6 @@
     <div class="flex items-center justify-center w-full h-[40rem]" v-else>
       <p class="text-2xl ">No data so far 😭</p>
     </div>
-
   </template>
   
   <script setup>
