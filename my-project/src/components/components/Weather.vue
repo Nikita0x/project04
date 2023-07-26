@@ -1,12 +1,12 @@
 <template>
   <div
-    class="w-full h-[200px] bg-[#1D232A] shadow-xl flex flex-col sm:flex-row sm:rounded-xl"
+    class="w-full h-28 bg-[#1D232A] shadow-xl flex flex-col sm:flex-row pb-5"
   >
   <!-- left column -->
     <div
       class="flex flex-col items-center w-full text-gray-300 justify-evenly sm:rounded-l-xl"
     >
-      <p v-if="store.state.weatherData" class="pt-5 text-3xl">{{ city }}</p>
+      <p v-if="store.state.weatherData" class="pt-5 text-2xl">{{ city }}</p>
         <div v-if="store.state.weatherData" class="flex text-2xl">
         {{ main }}
         <div class="flex items-center justify-center w-10 h-10 lg:tooltip" :data-tip="description">
@@ -16,7 +16,7 @@
           />
         </div>
       </div>
-      <p v-if="store.state.weatherData" class="text-3xl">{{ temp }} <span v-if="temp">°C</span></p>
+      <p v-if="store.state.weatherData" class="text-2xl">{{ temp }} <span v-if="temp">°C</span></p>
     </div>
     <!-- right column -->
     <div

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="flex flex-col justify-center items-center w-[240px] h-[200px] bg-zinc-800 p-5 sm:p-0 rounded-x text-white hover:scale-105 rounded-lg transition cursor-pointer"
+    class="flex flex-col justify-center items-center w-[240px] h-[200px] bg-[#374151] p-5 sm:p-0 rounded-x text-white hover:scale-105 rounded-lg transition cursor-pointer"
     v-for="item in hits"
     :key="item.id"
     @click="showModal(item)"

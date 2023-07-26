@@ -1,37 +1,39 @@
 <template>
-  <!-- collapsable -->
-  <div v-if="store.state.weatherData" class="text-black">
-    <div class="text-xl font-medium collapse-title">More details</div>
-    <div class="flex flex-col space-y-3 collapse-content">
-      <p class="text-2xl">
-        Sunrise: <span class="text-[#D1D5DB] ml-1"> time</span>
+  <div class="relative flex items-center justify-center">
+
+  <div v-if="store.state.weatherData" class="relative w-full overflow-hidden collapsible">
+      <input class="absolute inset-x-0 top-0 z-10 h-12 opacity-0 cursor-pointer peer" type="checkbox">
+      <div class="flex items-center h-12 p-7 bg-[#1D232A] shadow-xl text-gray-300 border border-gray-500 text-2xl">More details</div>
+      <!-- content -->
+      <div class=" overflow-hidden transition-all duration-500 bg-[#1D232A] text-gray-300 peer-checked:max-h-[24rem] peer-checked:p-5 peer-checked:opacity-1 max-h-0">
+        <p class="text-2xl">
+        Sunrise: <span class="ml-1"> time</span>
       </p>
       <p class="text-2xl">
-        Sunset: <span class="text-[#D1D5DB] ml-1">time</span>
+        Sunset: <span class="ml-1">time</span>
       </p>
       <p v-if="store.state.weatherData" class="text-2xl">
-        Minimum: <span class="text-[#D1D5DB] ml-1">{{ temp_min }} °C</span>
+        Minimum: <span class="ml-1">{{ temp_min }} °C</span>
       </p>
       <p v-if="store.state.weatherData" class="text-2xl">
-        Maximum: <span class="text-[#D1D5DB] ml-1">{{ temp_max }} °C</span>
+        Maximum: <span class="ml-1">{{ temp_max }} °C</span>
       </p>
       <p v-if="store.state.weatherData" class="text-2xl">
-        Feels like: <span class="text-[#D1D5DB] ml-1">{{ feels_like }} °C</span>
+        Feels like: <span class="ml-1">{{ feels_like }} °C</span>
       </p>
       <p v-if="store.state.weatherData" class="text-2xl">
-        Latitude: <span class="text-[#D1D5DB] ml-1">{{ lat }} °</span>
+        Latitude: <span class="ml-1">{{ lat }} °</span>
       </p>
       <p v-if="store.state.weatherData" class="text-2xl">
-        Longitude: <span class="text-[#D1D5DB] ml-1">{{ lon }} °</span>
+        Longitude: <span class="ml-1">{{ lon }} °</span>
       </p>
       <p v-if="store.state.weatherData" class="text-2xl">
-        Humidity: <span class="text-[#D1D5DB] ml-1">{{ humidity }} %</span>
+        Humidity: <span class="ml-1">{{ humidity }} %</span>
       </p>
-      <!-- if no data -->
-      <p v-else>No data</p>
+      </div>
     </div>
   </div>
-  <div v-else class="flex items-center justify-center h-1/2" >No data so far 😭</div>
+
 </template>
 
 <script setup>
