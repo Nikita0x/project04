@@ -1,14 +1,14 @@
 <template>
-  <div class="container max-w-[1200px] mx-auto">
+  <div class="container max-w-[1200px] mx-auto flex justify-center items-center">
     <div v-if="store.state.restCountries" class="mx-auto shadow-xl card bg-base-100">
-      <figure>
+      <figure class="border border-gray-700 rounded-xl">
         <img
           class="h-full w-96"
           :src="coatOfArms"
           alt="Coat of Arms"
         />
       </figure>
-      <div class="card-body">
+      <div class="text-gray-300 card-body">
         <p class="text-xl">Continent:  {{ continent }}</p>
         <p  class="text-xl">Independent:  {{ independent }}</p>
         <p  class="text-xl">Capital: {{ capital }}</p>
@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="flex items-center justify-center h-[40rem]" v-else>
-      <p class="text-2xl">No data so far 😭</p>
+      <p class="text-2xl text-gray-300">No data so far 😭</p>
     </div>
   </div>
 </template>
