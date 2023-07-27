@@ -13,7 +13,7 @@ const lat = computed(() => {
   if(store.getters.getLat) {
     return store.getters.getLat;
   } else {
-    console.error('API call to openweather failed.')
+    // console.error('API call to openweather failed.')
     return null
   }
 });
@@ -21,7 +21,7 @@ const lon = computed(() => {
   if(store.getters.getLon) {
     return store.getters.getLon;
   } else {
-    console.error('API call to openweather failed.')
+    // console.error('API call to openweather failed.')
     return null
   }
 });

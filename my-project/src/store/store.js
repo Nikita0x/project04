@@ -11,6 +11,8 @@ const store = createStore({
       opencagedata: null,
       pixabaydata: null,
       restCountries: null,
+      inputOnEnter: null,
+      imagesContainerSize: null,
     };
   },
   mutations: {
@@ -32,6 +34,12 @@ const store = createStore({
     },
     setRestCountriesData(state, data) {
       state.restCountries = data;
+    },
+    setInputOnEnter(state, data) {
+      state.inputOnEnter = data;
+    },
+    setImagesContainerSize(state, data) {
+      state.imagesContainerSize = data;
     },
   },
   getters: {
@@ -236,6 +244,20 @@ const store = createStore({
     getUnMember(state) {
       if(state.restCountries) {
         return state.restCountries.unMember
+      }
+      return null
+    },
+    // input on enter
+    getInputOnEnter(state) {
+      if(state.inputOnEnter) {
+        return state.input
+      }
+      return null
+    },
+    // images contaienr size
+    getImagesContainerSize(state) {
+      if(state.imagesContainerSize) {
+        return state.imagesContainerSize
       }
       return null
     },

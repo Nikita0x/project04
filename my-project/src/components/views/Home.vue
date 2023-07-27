@@ -5,7 +5,7 @@
         <Weather /> 
     </div>
     <AdditionalInfo />
-    <LeafletMap class=" w-4/5 h-[18rem] mt-10 pb-72" />
+    <!-- <LeafletMap class=" w-4/5 h-[18rem] mt-10 pb-72" /> -->
 
 </template>
 
