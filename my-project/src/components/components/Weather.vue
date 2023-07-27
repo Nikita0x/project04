@@ -1,12 +1,12 @@
 <template>
   <div
-    class="w-full h-28 bg-[#1D232A] shadow-xl flex flex-col sm:flex-row pb-5"
+    class="w-full h-28 bg-[#1D232A] flex flex-col sm:flex-row"
   >
   <!-- left column -->
     <div
-      class="flex flex-col items-center w-full text-gray-300 justify-evenly sm:rounded-l-xl"
+      class="flex flex-col w-full text-gray-300 pl-7 480px:pl-6 justify-evenly"
     >
-      <p v-if="store.state.weatherData" class="pt-5 text-2xl">{{ city }}</p>
+      <p v-if="store.state.weatherData" class="text-2xl">{{ city }}</p>
         <div v-if="store.state.weatherData" class="flex text-2xl">
         {{ main }}
         <div class="flex items-center justify-center w-10 h-10 lg:tooltip" :data-tip="description">
@@ -20,7 +20,7 @@
     </div>
     <!-- right column -->
     <div
-      class="flex flex-col items-center w-full text-gray-300 justify-evenly sm:rounded-r-xl"
+      class="flex flex-col items-start w-full text-gray-300 border-green-400 justify-evenly pl-7 480px:pl-6"
     >
     <p class="text-2xl" v-if="store.state.timezonedb">{{ formattedDay }}</p>
     <p class="text-2xl" v-if="store.state.timezonedb">{{ formattedTime }}</p>
@@ -32,6 +32,7 @@
           </div>
         </div>
     </div>
+    
   </div>
 </template>
 

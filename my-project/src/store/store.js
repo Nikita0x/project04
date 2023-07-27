@@ -12,6 +12,7 @@ const store = createStore({
       pixabaydata: null,
       restCountries: null,
       inputOnEnter: null,
+      imagesContainerSize: null,
     };
   },
   mutations: {
@@ -36,6 +37,9 @@ const store = createStore({
     },
     setInputOnEnter(state, data) {
       state.inputOnEnter = data;
+    },
+    setImagesContainerSize(state, data) {
+      state.imagesContainerSize = data;
     },
   },
   getters: {
@@ -247,6 +251,13 @@ const store = createStore({
     getInputOnEnter(state) {
       if(state.inputOnEnter) {
         return state.input
+      }
+      return null
+    },
+    // images contaienr size
+    getImagesContainerSize(state) {
+      if(state.imagesContainerSize) {
+        return state.imagesContainerSize
       }
       return null
     },

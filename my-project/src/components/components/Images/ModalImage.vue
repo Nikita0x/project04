@@ -34,7 +34,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 sm:w-6 sm:h-6">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5l-3.9 19.5m-2.1-19.5l-3.9 19.5" />
             </svg>
-            <p class="max-w-[17rem]"><span class="bg-blue-100 text-white-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{image.tags}}</span></p>
+            <p class="max-w-[17rem]"><span class="bg-blue-800 text-white-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">{{image.tags}}</span></p>
             </div>
             <!-- original link -->
             <div class="flex space-x-1 sm:space-x-3">
@@ -51,9 +51,6 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
-
-// const {image} = defineProps(['image']);
 defineProps({
   image: Object,
 })

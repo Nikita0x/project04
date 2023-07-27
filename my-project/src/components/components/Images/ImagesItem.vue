@@ -22,7 +22,10 @@
       </div>
     </div>
     <!-- Modal component -->
-  <ModalImage v-if="selectedImage" :image="selectedImage" @close="closeModal"/>
+  <Transition name="fade">
+    <ModalImage v-if="selectedImage" :image="selectedImage" @close="closeModal"/>
+  </Transition>
+
 </template>
 
 <script setup>
@@ -49,3 +52,16 @@ if(hits) {
   })
 }
 </script>
+
+<style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  scale: 1.2;
+}
+</style>
