@@ -6,7 +6,7 @@
       method="post"
     >
 
-    <h1 class="text-2xl font-extrabold text-center dark:text-white">Send a message</h1>
+    <h1 class="text-2xl font-extrabold text-center text-white">Send a message</h1>
 
       
       <!-- name -->

@@ -1,5 +1,9 @@
 <template>
+    <!-- default state -->
     <button  @click="loadMore" v-if="store.state.pixabaydata && isLoading === false"  class="mb-20 w-[9.2rem] text-white bg-[#050708] hover:bg-[#050708]/80 focus:ring-4 focus:outline-none focus:ring-[#050708]/50 font-medium rounded-lg text-lg py-2.5 text-center dark:hover:bg-[#050708]/40 dark:focus:ring-gray-600 transition">Load more</button>
+
+    <!-- hide button when no data -->
+    <button v-else-if="!store.state.pixabaydata && isLoading === false"  class="hidden"></button>
     
     <!-- show loading when fetching data -->
 
@@ -12,6 +16,7 @@
       </div>
     Loading...
     </button>
+    
 </template>
 
 <script setup>
