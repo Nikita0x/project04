@@ -3,7 +3,7 @@
     <!-- home -->
     <router-link
       to="/"
-      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A] rounded-bl-xl"
+      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A] hover:bg-[#252d35] transition duration-300 rounded-bl-xl"
       active-class="active-link"
     >
       <button>
@@ -27,7 +27,7 @@
     <!-- info -->
     <router-link
       to="/images"
-      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A] active"
+      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A] hover:bg-[#252d35]  transition duration-300 active"
       active-class="active-link"
     >
       <button>
@@ -51,7 +51,7 @@
     <!-- Images -->
     <router-link
       to="/about"
-      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A]"
+      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A] hover:bg-[#252d35]  transition duration-300"
       active-class="active-link"
     >
       <button>
@@ -75,7 +75,7 @@
         <!-- Feedback -->
         <router-link
       to="/submit"
-      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A] rounded-br-xl"
+      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A] hover:bg-[#252d35] rounded-br-xl  transition duration-300"
       active-class="active-link"
     >
       <button>
@@ -92,7 +92,7 @@
 
 <style scoped>
 .active-link {
-  background-color: #AED5DB;
+  background-color: #cfeef3;
   color: black;
 }
 </style>
