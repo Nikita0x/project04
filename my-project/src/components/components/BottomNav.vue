@@ -75,7 +75,7 @@
         <!-- Feedback -->
         <router-link
       to="/submit"
-      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A] hover:bg-[#252d35] rounded-br-xl  transition duration-300"
+      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A] hover:bg-[#252d35] transition duration-300  rounded-br-xl "
       active-class="active-link"
     >
       <button>

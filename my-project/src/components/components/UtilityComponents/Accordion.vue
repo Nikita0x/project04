@@ -2,7 +2,7 @@
   <div class="text-gray-300 border ">
     <button
       @click="accordionOpen = !accordionOpen"
-      class="w-full h-20 text-start hover:bg-[#171C21]"
+      class="w-full h-20 text-start bg-[#1D232A] hover:bg-[#252d35] transition duration-300"
     >
     <div class="flex items-center pl-5 space-x-5 text-2xl">
       <slot name="title">Title here</slot>
