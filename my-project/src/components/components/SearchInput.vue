@@ -70,7 +70,7 @@ async function fetchWeatherCoordinates() {
       );
       const data = await response.json();
       store.commit('setWeatherData', data);
-      // console.log(data);
+      console.log(data);
       await fetchTimezonedb();
     } catch (error) {
       console.error(error);
@@ -117,7 +117,7 @@ async function fetchWeatherCoordinates() {
     // console.log('encoded search term =' + encodedSearchTerm)
     const data = await response.json();
     store.commit('setPixabaydata', data);
-    console.log(data);
+    // console.log(data);
     await fetchRestCountries();
   } catch (error) {
     console.error(error);

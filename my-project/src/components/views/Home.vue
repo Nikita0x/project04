@@ -1,11 +1,9 @@
 <template>
     <SearchInput class="pt-10"/>
-    <!-- <OpenWeatherAPI/> -->
-    <div class="flex">
-        <Weather /> 
-    </div>
+    <OpenWeatherAPI/>
+    <Weather /> 
     <AdditionalInfo />
-    <!-- <LeafletMap class=" w-4/5 h-[18rem] mt-10 pb-72" /> -->
+    <LeafletMap class=" w-4/5 h-[18rem] mt-10 pb-72" />
 
 </template>
 

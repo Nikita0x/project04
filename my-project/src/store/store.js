@@ -117,6 +117,18 @@ const store = createStore({
       }
       return null
     },
+    getSunrise (state) {
+      if(state.weatherData) {
+        return state.weatherData.sys.sunrise
+      }
+      return null
+    },
+    getSunset (state) {
+      if(state.weatherData) {
+        return state.weatherData.sys.sunset
+      }
+      return null
+    },
     getVisibility (state) {
       if(state.weatherData) {
         return state.weatherData.visibility
@@ -170,18 +182,6 @@ const store = createStore({
     getCurrencySymbol(state) {
       if(state.opencagedata) {
         return state.opencagedata.results[0].annotations.currency.symbol
-      }
-      return null
-    },
-    getSunrise (state) {
-      if(state.opencagedata) {
-        return state.opencagedata.results[0].annotations.sun.rise.apparent
-      }
-      return null
-    },
-    getSunset (state) {
-      if(state.opencagedata) {
-        return state.opencagedata.results[0].annotations.sun.set.apparent
       }
       return null
     },

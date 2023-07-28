@@ -1,11 +1,12 @@
 <template>
-    <div class="container relative flex flex-col items-center justify-center max-w-full mx-auto ">
+    <!-- Images.vue -->
+    <div class="flex flex-col items-center">
         <ImagesContainer/>
-        <LoadMore/>
+        <LoadMore class="mb-20 "/>
     </div>
 </template>
 
 <script setup>
 import LoadMore from "../components/LogicComponents/LoadMore.vue"
-import ImagesContainer from "../components/ImagesContainer.vue"
+import ImagesContainer from '../components/ImagesContainer.vue'
 </script>

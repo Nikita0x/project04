@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full h-28 bg-[#1D232A] flex flex-col sm:flex-row"
+    class="w-full bg-[#1D232A] flex flex-col sm:flex-row border"
   >
   <!-- left column -->
     <div
@@ -32,7 +32,6 @@
           </div>
         </div>
     </div>
-    
   </div>
 </template>
 

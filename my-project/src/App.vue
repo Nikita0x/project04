@@ -5,7 +5,7 @@ import BottomNav from './components/components/BottomNav.vue'
 
 <template>
   <div class="flex items-center justify-center h-screen text-xs bg-[#1D232A] sm:text-sm md:text-base">
-    <div class="container h-screen w-[35rem] border border-gray-300 mx-auto rounded-xl flex flex-col relative">
+    <div class="container w-[40rem] h-screen relative flex flex-col mx-auto border border-gray-300 rounded-xl">
       <transition>
         <div class="overflow-auto">
           <router-view/>

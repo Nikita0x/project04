@@ -1,77 +1,84 @@
 <template>
-  <div class="relative flex items-center justify-center">
+<div>
 
-  <div v-if="store.state.weatherData" class="relative w-full overflow-hidden collapsible">
-      <input class="absolute inset-x-0 top-0 z-10 h-12 opacity-0 cursor-pointer peer" type="checkbox">
-      <div class="flex items-center h-12 p-7 bg-[#1D232A] shadow-xl text-gray-300 border border-gray-500 text-2xl">More details</div>
-      <!-- content -->
-      <div class=" overflow-hidden transition-all duration-500 bg-[#1D232A] text-gray-300 peer-checked:max-h-[24rem] peer-checked:p-5 peer-checked:opacity-1 max-h-0">
-        <p class="text-2xl">
-        Sunrise: <span class="ml-1"> time</span>
-      </p>
-      <p class="text-2xl">
-        Sunset: <span class="ml-1">time</span>
-      </p>
-      <p v-if="store.state.weatherData" class="text-2xl">
-        Minimum: <span class="ml-1">{{ temp_min }} °C</span>
-      </p>
-      <p v-if="store.state.weatherData" class="text-2xl">
-        Maximum: <span class="ml-1">{{ temp_max }} °C</span>
-      </p>
-      <p v-if="store.state.weatherData" class="text-2xl">
-        Feels like: <span class="ml-1">{{ feels_like }} °C</span>
-      </p>
-      <p v-if="store.state.weatherData" class="text-2xl">
-        Latitude: <span class="ml-1">{{ lat }} °</span>
-      </p>
-      <p v-if="store.state.weatherData" class="text-2xl">
-        Longitude: <span class="ml-1">{{ lon }} °</span>
-      </p>
-      <p v-if="store.state.weatherData" class="text-2xl">
-        Humidity: <span class="ml-1">{{ humidity }} %</span>
-      </p>
-      </div>
-    </div>
-  </div>
+  <!-- accordion with pure css -->
+  <Accordion  v-if="store.state.weatherData">
+    <template v-slot:title>
+      <p>More details</p>
+    </template>
+    <template v-slot:content>
+    <MoreDetails>
+      <template v-slot:image>
+        <img src="../../assets/img/temperature.svg" alt="Temperature">
+      </template>
+      <template v-slot:title>
+        <p v-if="store.state.weatherData">Feels like: {{feels_like}}°C</p>
+      </template>
+      <template v-slot:description>
+        <p v-if="store.state.weatherData">Temperature tells us how hot or cold something is. It affects our clothes, activities, and comfort. Whether it's a warm day at the beach or a cozy night indoors, temperature plays a big role in our daily lives.
+        </p>
+      </template>
+    </MoreDetails>
+    <MoreDetails>
+      <template v-slot:image>
+        <img src="../../assets/img/sunrise.svg" alt="Sunrise">
+      </template>
+      <template v-slot:title>
+        <p v-if="store.state.weatherData">Sunrise: {{sunrise}}</p>
+      </template>
+      <template v-slot:description>
+        <p>The magical moment when the sun appears above the horizon, marking the beginning of a new day.
+        </p>
+      </template>
+    </MoreDetails>
+    <MoreDetails>
+      <template v-slot:image>
+        <img src="../../assets/img/sunset.svg" alt="Sunset">
+      </template>
+      <template v-slot:title>
+        <p v-if="store.state.weatherData">Sunset: {{sunset}}</p>
+      </template>
+      <template v-slot:description>
+        <p>The enchanting time when the sun dips below the horizon, painting the sky with breathtaking colors.
+        </p>
+      </template>
+    </MoreDetails>
+    <MoreDetails>
+      <template v-slot:image>
+        <img src="../../assets/img/compass3.svg" alt="Coordinates">
+      </template>
+      <template v-slot:title>
+        <p v-if="store.state.weatherData">Longitude: {{lon}}</p>
+      </template>
+      <template v-slot:title2>
+        <p v-if="store.state.weatherData">Latitude: {{lat}}</p>
+      </template>
+      <template v-slot:description>
+        <p>Longitude is a geographic coordinate that specifies the east–west position of a point on the surface of the Earth, or another celestial body.</p>
+      </template>
+    </MoreDetails>
+    <MoreDetails>
+      <template v-slot:image>
+        <img src="../../assets/img/pressure.svg" alt="Pressure">
+      </template>
+      <template v-slot:title>
+        <p v-if="store.state.weatherData">Pressure: {{pressure}} hPa</p>
+      </template>
+      <template v-slot:description>
+        <p>Meteorologists use pressure to predict weather changes, while we experience its effects in various ways. From clear skies under high-pressure systems to possible storms in low-pressure areas.
+        </p>
+      </template>
+    </MoreDetails>
 
-  <div id="accordion-collapse" data-accordion="collapse">
-  <h2 id="accordion-collapse-heading-1">
-    <button type="button" class="flex items-center justify-between w-full p-5 font-medium text-left text-gray-500 border border-b-0 border-gray-200 rounded-t-xl focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-800 dark:border-gray-700 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800" data-accordion-target="#accordion-collapse-body-1" aria-expanded="true" aria-controls="accordion-collapse-body-1">
-      <span>What is Flowbite?</span>
-      <svg data-accordion-icon class="w-3 h-3 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5 5 1 1 5"/>
-      </svg>
-    </button>
-  </h2>
-  <div id="accordion-collapse-body-1" class="hidden" aria-labelledby="accordion-collapse-heading-1">
-    <div class="p-5 text-gray-400 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
-      <p class="text-2xl">
-        Minimum: <span class="ml-1">{{ temp_min }} °C</span>
-      </p>
-      <p class="text-2xl">
-        Maximum: <span class="ml-1">{{ temp_max }} °C</span>
-      </p>
-      <p class="text-2xl">
-        Feels like: <span class="ml-1">{{ feels_like }} °C</span>
-      </p>
-      <p class="text-2xl">
-        Latitude: <span class="ml-1">{{ lat }} °</span>
-      </p>
-      <p class="text-2xl">
-        Longitude: <span class="ml-1">{{ lon }} °</span>
-      </p>
-      <p class="text-2xl">
-        Humidity: <span class="ml-1">{{ humidity }} %</span>
-      </p>
-      
-    </div>
-  </div>
+    </template>
+  </Accordion>
 </div>
-
 </template>
 
 <script setup>
-import { computed, ref, watch } from 'vue';
+import Accordion from "./UtilityComponents/Accordion.vue"
+import MoreDetails from "./Home/MoreDetails.vue"
+import { computed } from 'vue';
 import { useStore } from 'vuex';
 const store = useStore();
 
@@ -100,10 +107,10 @@ const feels_like = computed(() => {
   }
 });
 const lat = computed(() => {
-  return store.getters.getLat;
+  return store.getters.getLat.toFixed(1);
 });
 const lon = computed(() => {
-  return store.getters.getLon;
+  return store.getters.getLon.toFixed(1);
 });
 const humidity = computed(() => {
   return store.getters.getHumidity;
@@ -118,4 +125,25 @@ const main = computed(() => {
 const datetime = computed(() => {
   return store.getters.getDatetime;
 });
+const pressure = computed(() => {
+  return store.getters.getPressure;
+});
+const timezone = computed(() => {
+  return store.getters.getTimezone;
+});
+const sunset = computed(() => {
+  const time = getTime(store.getters.getSunset + timezone.value)
+  const split = time.slice(0, 5)
+  return split
+});
+
+const sunrise = computed(() => {
+  const time = getTime(store.getters.getSunrise + timezone.value)
+  const split = time.slice(0, 5)
+  return split
+});
+
+function getTime(seconds) {
+  return new Date(seconds * 1000).toLocaleTimeString('ru-RU', {timeZone: 'Atlantic/Reykjavik'})
+}
 </script>

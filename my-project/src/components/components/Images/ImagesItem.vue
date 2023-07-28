@@ -20,7 +20,7 @@
           <p>{{ item.likes }}</p>
         </div>
       </div>
-    </div>
+  </div>
     <!-- Modal component -->
   <Transition name="fade">
     <ModalImage v-if="selectedImage" :image="selectedImage" @close="closeModal"/>

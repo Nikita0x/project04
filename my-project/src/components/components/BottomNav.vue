@@ -1,9 +1,9 @@
 <template>
-  <div class="flex w-full h-14">
+  <div class="flex w-full h-14 border-t-gray-300">
     <!-- home -->
     <router-link
       to="/"
-      class="flex items-center justify-center w-full text-pink-600 bg-pink-200 rounded-bl-xl"
+      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A] rounded-bl-xl"
       active-class="active-link"
     >
       <button>
@@ -27,7 +27,7 @@
     <!-- info -->
     <router-link
       to="/images"
-      class="flex items-center justify-center w-full text-blue-600 bg-blue-200 border-blue-600 active"
+      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A] active"
       active-class="active-link"
     >
       <button>
@@ -51,7 +51,7 @@
     <!-- Images -->
     <router-link
       to="/about"
-      class="flex items-center justify-center w-full text-teal-600 bg-teal-200"
+      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A]"
       active-class="active-link"
     >
       <button>
@@ -75,7 +75,7 @@
         <!-- Feedback -->
         <router-link
       to="/submit"
-      class="flex items-center justify-center w-full text-yellow-600 bg-yellow-200 rounded-br-xl"
+      class="flex items-center justify-center w-full text-gray-500 bg-[#1D232A] rounded-br-xl"
       active-class="active-link"
     >
       <button>
@@ -92,6 +92,7 @@
 
 <style scoped>
 .active-link {
-  background-color: rgba(30, 208, 86);
+  background-color: #AED5DB;
+  color: black;
 }
 </style>
