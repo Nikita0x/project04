@@ -15,7 +15,7 @@
         <p v-if="store.state.weatherData">Feels like: {{feels_like}}°C</p>
       </template>
       <template v-slot:description>
-        <p v-if="store.state.weatherData">Temperature tells us how hot or cold something is. It affects our clothes, activities, and comfort. Whether it's a warm day at the beach or a cozy night indoors, temperature plays a big role in our daily lives.
+        <p v-if="store.state.weatherData">Temperature tells us how hot or cold something is. It influences our choice of clothes and activities, ensuring we stay comfortable in different settings.
         </p>
       </template>
     </MoreDetails>
@@ -69,7 +69,30 @@
         </p>
       </template>
     </MoreDetails>
-
+    <MoreDetails>
+      <template v-slot:image>
+        <img src="../../assets/img/humidity.svg" alt="Humidity">
+      </template>
+      <template v-slot:title>
+        <p v-if="store.state.weatherData">Humidity: {{humidity}}%</p>
+      </template>
+      <template v-slot:description>
+        <p>Higher humidity levels indicate more moisture in the air, making it feel sticky and warmer. Lower humidity can lead to drier conditions.
+        </p>
+      </template>
+    </MoreDetails>
+    <MoreDetails>
+      <template v-slot:image>
+        <img src="../../assets/img/wind.svg" alt="Wind speed">
+      </template>
+      <template v-slot:title>
+        <p v-if="store.state.weatherData">Wind speed: {{windSpeed}} metre/sec</p>
+      </template>
+      <template v-slot:description>
+        <p>Wind plays a significant role in weather patterns, affecting factors like temperature, precipitation, and the formation of clouds.
+        </p>
+      </template>
+    </MoreDetails>
     </template>
   </Accordion>
 </div>
@@ -114,6 +137,9 @@ const lon = computed(() => {
 });
 const humidity = computed(() => {
   return store.getters.getHumidity;
+});
+const windSpeed = computed(() => {
+  return store.getters.getWindSpeed;
 });
 
 const icon = computed(() => {

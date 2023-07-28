@@ -135,6 +135,12 @@ const store = createStore({
       }
       return null
     },
+    getWindSpeed(state) {
+      if(state.weatherData) {
+        return state.weatherData.wind.speed
+      }
+      return null
+    },
     getDescription (state) {
       if(state.weatherData) {
         return state.weatherData.weather[0].description

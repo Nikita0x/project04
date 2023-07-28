@@ -14,7 +14,7 @@
         <p  class="text-xl">Capital: {{ capital }}</p>
         <p  class="text-xl">Languages:  {{ languages }}</p>
         <p  class="text-xl">Population:  {{ population }}</p>
-        <p  class="text-xl">Currency:  {{ currencyName }} {{ currencySymbol }}</p>
+        <p  class="text-xl">Currency:  {{ currencyName }} ( {{ currencySymbol }} )</p>
         <p  class="text-xl">UN Member:  {{ unMember }}</p>
       </div>
     </div>
