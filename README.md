@@ -1,8 +1,6 @@
 # Check Your Weather
 ## _Your insight into the city._ 
 
-========================
-
 ![checkyourweather](https://github.com/Nikita0x/project04/assets/114003900/092cfc29-2eb8-45f8-8f37-afde37692048)
 
 
